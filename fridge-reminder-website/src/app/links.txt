@@ -1,3 +1,17 @@
 https://www.prisma.io/docs/getting-started/quickstart
+https://nextjs.org/learn/dashboard-app/setting-up-your-database
 
 https://nextjs.org/docs/pages/building-your-application/styling/css-modules
+
+pushing to git
+cd to working dir
+git status to check smth
+git init
+git add .
+git commit -m "initial commit"
+if fail to verify who you are: (on new machines)
+    git config --global user.email "email"
+    git commit -m "initial commit"
+git remote add origin https:github.com/user/project
+git branch -M main
+git push -u origin main

@@ -1,3 +1,4 @@
+import "../../globals.css";
 import styles from "./styles.module.css";
 
 export default function Home() {
@@ -18,7 +19,7 @@ export default function Home() {
     return (
         <main>
             <h1 className={styles.title_text}>Your fridge contents:</h1>
-            <table>
+            <table cellSpacing="0">
                 <tr>
                     <th scope="col" className={styles.contents_table}>ID</th>
                     <th scope="col" className={styles.contents_table}>Item</th>

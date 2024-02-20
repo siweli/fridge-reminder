@@ -1,0 +1,18 @@
+.card_container {
+    border: red solid 1px;
+}
+
+.dash_card {
+    border-radius: 10%;
+    border: 2px black solid;
+    background-color: gray;
+    width: 15%;
+    height: 5em;
+
+    -webkit-transition: width 1s;
+}
+
+.dash_card:hover {
+    width: 20%;
+    -webkit-transition: width 1s;
+}

@@ -49,12 +49,24 @@
   font-weight: bold;
 }
 
-.new_item {
+.wrapper {
   position: relative;
+}
+
+.new_item {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  
   z-index: 10;
   margin: auto;
   padding: 30px;
   background-color: gray;
+  border: 5px black solid;
+  border-radius: 10px;
   width: 30%;
+  height: 7em;
   display: none;
 }

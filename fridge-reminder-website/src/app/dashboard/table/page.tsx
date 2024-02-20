@@ -1,7 +1,15 @@
+"use client";
+
+import { useState } from "react";
 import "../../globals.css";
 import styles from "./styles.module.css";
 
 export default function Home() {
+
+    const [showDiv, setShowDiv] = useState(false);
+    function toggle() {
+        setShowDiv(!showDiv);
+    }
 
     let fridge_contents = [["Milk", "12/2/2024"], ["Eggs", "13/2/2024"], ["Meat", "14/2/2024"]];
     let rows = []
@@ -29,7 +37,17 @@ export default function Home() {
                     {rows}
                 </tbody>
             </table>
-            <button type="submit" className={styles.add_row_btn}>+</button>
+            <button type="submit" onClick={toggle} className={styles.add_row_btn}>+</button>
+
+            <div className={styles.new_item} style={{display: showDiv?"block":"none"}}>
+                <h2>Add a new item:</h2>
+                <form method="POST" action="../../api/addrow">
+                    <input name="test" type="text" placeholder="Item name"></input>
+                    <p>Expires:</p>
+                    <input type="date"></input>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
         </main>
     );
 }

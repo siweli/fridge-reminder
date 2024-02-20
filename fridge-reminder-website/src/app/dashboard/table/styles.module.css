@@ -48,3 +48,13 @@
   font-size: 3em;
   font-weight: bold;
 }
+
+.new_item {
+  position: relative;
+  z-index: 10;
+  margin: auto;
+  padding: 30px;
+  background-color: gray;
+  width: 30%;
+  display: none;
+}

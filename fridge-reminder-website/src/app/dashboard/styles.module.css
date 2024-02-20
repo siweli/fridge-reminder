@@ -1,5 +1,5 @@
 .card_container {
-    border: red solid 1px;
+    border: red solid 1px;  
 }
 
 .dash_card {
@@ -9,10 +9,10 @@
     width: 15%;
     height: 5em;
 
-    -webkit-transition: width 1s;
+    transition: width 1s;
 }
 
 .dash_card:hover {
     width: 20%;
-    -webkit-transition: width 1s;
+    transition: width 1s;
 }

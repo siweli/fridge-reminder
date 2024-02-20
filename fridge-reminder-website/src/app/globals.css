@@ -16,6 +16,10 @@ body {
     linear-gradient(336deg, rgba(0, 255, 0, 0.8), rgba(0, 255, 0, 0) 70.71%);
 }
 
+/* =================== */
+/* HEADER/FOOTER STUFF */
+/* =================== */
+
 header {
   width: 100%;
   position: relative;
@@ -24,6 +28,7 @@ header {
 
 footer {
   width: 100%;
+  position: relative;
   margin-top: auto;
 }
 
@@ -42,8 +47,11 @@ footer {
   height: 70px;
   width: 100%;
 }
+/* =================== */
+/*  TEXT STUFF         */
+/* =================== */
 
-.page_link {
+h1, h2 {
   display: inline;
   padding: 15px;
 }

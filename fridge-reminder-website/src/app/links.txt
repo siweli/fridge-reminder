@@ -1,6 +1,3 @@
-https://www.prisma.io/docs/getting-started/quickstart
-https://nextjs.org/learn/dashboard-app/setting-up-your-database
-
 https://nextjs.org/docs/pages/building-your-application/styling/css-modules
 
 pushing to git

@@ -1,5 +1,7 @@
 https://nextjs.org/docs/pages/building-your-application/styling/css-modules
 
+https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases-typescript-mysql
+
 pushing to git
 cd to working dir
 git status to check smth
@@ -12,3 +14,10 @@ if fail to verify who you are: (on new machines)
 git remote add origin https:github.com/user/project
 git branch -M main
 git push -u origin main
+
+npm install prisma typescript ts-node @types/node --save-dev 
+npx tsc --init
+npx prisma init
+docker pull phpmyadmin
+docker run --name phpmyadmin -d --link fridge-reminder-db:db -p 8080:80 phpmyadmin
+npx prisma migrate dev --name init

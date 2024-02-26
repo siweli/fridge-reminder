@@ -34,11 +34,3 @@ model devices {
 
   list items[]
 }
-
-// model list {
-
-//   item items @relation(fields: [item_id], references: [id])
-//   item_id Int
-
-//   @@id([device_id,item_id])
-// }

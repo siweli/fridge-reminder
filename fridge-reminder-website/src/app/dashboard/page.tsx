@@ -4,9 +4,7 @@ import styles from "./styles.module.css";
 export default function Page() {
     return (
         <main>
-            <head>
-                <title>Dashboard</title>
-            </head>
+            <title>Dashboard</title>
             <h1>Dashboard</h1>
             <div className={styles.card_container}>
                 <a href="/dashboard/table">

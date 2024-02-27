@@ -1,18 +1,18 @@
-.card_container {
-    border: red solid 1px;  
-}
+/* .card_container {
+    
+} */
 
 .dash_card {
     border-radius: 10%;
     border: 2px black solid;
     background-color: gray;
-    width: 15%;
+    width: 12em;
     height: 5em;
-
-    transition: width 1s;
+    transition: width 1s, height 1s;
 }
 
 .dash_card:hover {
-    width: 20%;
-    transition: width 1s;
+    width: 15em;
+    height: 6em;
+    transition: width 1s, height 1s;
 }

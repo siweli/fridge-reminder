@@ -34,7 +34,7 @@ export default function RootLayout({
           <div className="fade_up"></div>
 
           <div className="white_bg">
-            <h1>FOOTER</h1>
+            
           </div>
         </footer>
       </body>

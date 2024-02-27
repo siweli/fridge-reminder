@@ -5,7 +5,7 @@ export default function Page() {
         <main>
             <title>Home</title>
             
-            <h1>Welcome</h1>
+            <h1 className="fade_in">Welcome</h1>
         </main>
     )
 }

@@ -3,21 +3,20 @@
 import { useState } from "react";
 import "../../globals.css";
 import styles from "./styles.module.css";
+import prisma  from "../../../libaries/prisma"
 
-export default function Home() {
+export default async function Home() {
 
     const [showDiv, setShowDiv] = useState(false);
     function toggle() {
         setShowDiv(!showDiv);
     }
 
-    
-
     let fridge_contents = [["Milk", "12/2/2024"], ["Eggs", "13/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"]];
     
-    // let fridge_contents = [["Milk", "12/2/2024"], ["Eggs", "13/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"]];
-    
     let rows = []
+
+    console.log(await prisma.users.findMany())
 
     for (let i=0; i<fridge_contents.length; i++) {
         rows.push(

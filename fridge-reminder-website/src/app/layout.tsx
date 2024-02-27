@@ -18,7 +18,7 @@ export default function RootLayout({
 
             <div className="other_pages">
               <h2 className="page_link"><a href="/dashboard">Dashboard</a></h2>
-              <h2 className="page_link"><a href="/">Account</a></h2>
+              <h2 className="page_link"><a href="/account">Account</a></h2>
             </div>
 
           </div>

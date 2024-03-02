@@ -1,32 +1,34 @@
-"use client";
+// "use client";
 
 import { useState } from "react";
 import "../../globals.css";
 import styles from "./styles.module.css";
 import prisma  from "../../../libaries/prisma"
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation"
 
 export default async function Home() {
+    const token = cookies().get("user_id");
 
-    const [showDiv, setShowDiv] = useState(false);
-    function toggle() {
-        setShowDiv(!showDiv);
+    if (!token) {
+        redirect("../account")
     }
 
-    let fridge_contents = [["Milk", "12/2/2024"], ["Eggs", "13/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"], ["Meat", "14/2/2024"]];
+    const fridge_contents = await prisma.items.findMany({
+        where: {
+            user_id: parseInt(token.value),
+        },
+    });
     
     let rows = []
-
-    console.log(await prisma.users.findMany())
-
     for (let i=0; i<fridge_contents.length; i++) {
         rows.push(
             <tr key={i}>
-                <td className={styles.contents_table}>{i}</td>
-                <td className={styles.contents_table}>{fridge_contents[i][0]}</td>
-                <td className={styles.contents_table}>{fridge_contents[i][1]}</td>
+                <td className={styles.contents_table}>{fridge_contents[i].name}</td>
+                <td className={styles.contents_table}>{fridge_contents[i].expires}</td>
                 <td>
                     <form method="POST" action="../../api/deleterow">
-                        <input type="hidden" name="id" value={i}></input>
+                        <input type="hidden" name="id" value={fridge_contents[i].id}></input>
                         <button type="submit" className={styles.delete_row_btn}>-</button>
                     </form>
                 </td>
@@ -41,7 +43,6 @@ export default async function Home() {
                 <table cellSpacing="0">
                     <thead>
                         <tr>
-                            <th scope="col" className={styles.contents_table}>ID</th>
                             <th scope="col" className={styles.contents_table}>Item</th>
                             <th scope="col" className={styles.contents_table}>Expires</th>
                         </tr>
@@ -50,9 +51,9 @@ export default async function Home() {
                         {rows}
                     </tbody>
                 </table>
-                <button type="submit" onClick={toggle} className={styles.add_row_btn}>+</button>
+                <button type="submit" className={styles.add_row_btn}>+</button>
 
-                <div className={styles.new_item} style={{display: showDiv?"block":"none"}}>
+                <div className={styles.new_item}>
                     <h2>Add a new item:</h2>
                     <form method="POST" action="../../api/addrow">
                         <input name="item_name" type="text" placeholder="Item name"></input>

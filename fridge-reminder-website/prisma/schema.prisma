@@ -13,52 +13,42 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// model items {
+//   id Int @id @unique @default(autoincrement())
+//   device devices @relation(fields: [device_id], references: [id])
+   
+//   device_id Int
+//   name String
+//   expires DateTime 
+// }
+
+// model users {
+//   id Int @id @default(autoincrement()) @unique
+//   name String
+//   password String
+// }
+
+// model devices {
+//   id Int @id @default(autoincrement()) @unique
+//   user_id Int
+
+//   list items[]
+// }
+
 model items {
   id Int @id @unique @default(autoincrement())
-  device devices @relation(fields: [device_id], references: [id])
+  user users @relation(fields: [user_id], references: [id])
    
-  device_id Int
+  user_id Int
   name String
-  expires DateTime 
+  // expires DateTime @default(now()) @db.Date
+  expires String
 }
 
 model users {
   id Int @id @default(autoincrement()) @unique
   name String
   password String
-}
-
-model devices {
-  id Int @id @default(autoincrement()) @unique
-  user_id Int
 
   list items[]
 }
-
-
-// EXAMPLE MODELS
-// model Post {
-//   id        Int      @id @default(autoincrement())
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
-//   title     String   @db.VarChar(255)
-//   content   String?
-//   published Boolean  @default(false)
-//   author    User     @relation(fields: [authorId], references: [id])
-//   authorId  Int
-// }
-
-// model Profile {
-//   id     Int     @id @default(autoincrement())
-//   bio    String?
-//   user   User    @relation(fields: [userId], references: [id])
-//   userId Int     @unique
-// }
-
-// model User {
-//   id      Int      @id @default(autoincrement())
-//   email   String   @unique
-//   name    String?
-//   posts   Post[]
-//   profile Profile?
-// }

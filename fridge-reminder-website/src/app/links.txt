@@ -21,4 +21,3 @@ npx prisma init
 docker pull phpmyadmin
 docker run --name phpmyadmin -d --link fridge-reminder-db:db -p 8080:80 phpmyadmin
 npx prisma migrate dev --name init
-npx ts-node ./prisma/index.js

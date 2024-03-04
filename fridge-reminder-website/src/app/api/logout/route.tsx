@@ -6,5 +6,6 @@ export async function POST(req: NextRequest) {
     const formData = await req.formData()
 
     cookies().delete("user_logged_in")
+    cookies().delete("user_id")
     redirect("../account")
 }

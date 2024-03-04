@@ -16,3 +16,20 @@
     height: 6em;
     transition: width 1s, height 1s;
 }
+
+.container {
+    border: 3px green solid;
+    columns: 2;
+}
+
+.log_container {
+    padding: 1%;
+    border-radius: 20px;
+    border: 2px black solid;
+    background-color: gray;
+    width: 20em;
+}
+
+.entry {
+    border-radius: 7px;
+}

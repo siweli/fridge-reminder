@@ -17,8 +17,6 @@ export async function POST(req: NextRequest) {
         },
     });
 
-    console.log(login)
-
     if (!login) return
 
     // cookies().set('token', randomUUID());

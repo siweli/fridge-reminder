@@ -70,3 +70,9 @@
   height: 7em;
   /* display: none; */
 }
+
+.entry {
+  border-radius: 7px;
+  font-size: 15px;
+  padding-left: 4px;
+}

@@ -56,7 +56,7 @@ export default async function Home() {
                 <div className={styles.new_item}>
                     <h2>Add a new item:</h2>
                     <form method="POST" action="../../api/addrow">
-                        <input name="item_name" type="text" placeholder="Item name"></input>
+                        <input name="item_name" type="text" placeholder="Item name" className={styles.entry}></input>
                         <p>Expires:</p>
                         <input name="expire_date" type="date"></input>
                         <button type="submit">Submit</button>

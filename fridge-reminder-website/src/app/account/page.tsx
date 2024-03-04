@@ -5,6 +5,7 @@ import styles from "./styles.module.css";
 
 export default function Page() {
     const token = cookies().get("user_logged_in");
+    
     if (token) {
         return (
             <main>
@@ -37,7 +38,7 @@ export default function Page() {
                     <h2>Create an account:</h2>
                     <form method="POST" action="../api/addaccount">
                         <input name="username" type="text" placeholder="Username" className={styles.entry}></input>
-                        <input name="password" type="password" placeholder="Password"></input>
+                        <input name="password" type="password" placeholder="Password" className={styles.entry}></input>
                         <button type="submit">Submit</button>
                     </form>
                 </div>
@@ -45,8 +46,8 @@ export default function Page() {
                 <div className={styles.log_container}>
                     <h2>Log in:</h2>
                     <form method="POST" action="../api/login">
-                        <input name="username" type="text" placeholder="Username"></input>
-                        <input name="password" type="password" placeholder="Password"></input>
+                        <input name="username" type="text" placeholder="Username" className={styles.entry}></input>
+                        <input name="password" type="password" placeholder="Password" className={styles.entry}></input>
                         <button type="submit">Submit</button>
                     </form>
                 </div>

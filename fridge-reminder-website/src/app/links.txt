@@ -18,6 +18,8 @@ git push -u origin main
 npm install prisma typescript ts-node @types/node --save-dev 
 npx tsc --init
 npx prisma init
+docker pull mariadb
+docker run -d --name my-maria-db -p 3306:3306 -e MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=1 mariadb:latest
 docker pull phpmyadmin
-docker run --name phpmyadmin -d --link fridge-reminder-db:db -p 8080:80 phpmyadmin
+docker run --name phpmyadmin -d --link my-maria-db:db -p 8080:80 phpmyadmin
 npx prisma migrate dev --name init

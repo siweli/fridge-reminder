@@ -13,33 +13,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// model items {
-//   id Int @id @unique @default(autoincrement())
-//   device devices @relation(fields: [device_id], references: [id])
-   
-//   device_id Int
-//   name String
-//   expires DateTime 
-// }
-
-// model users {
-//   id Int @id @default(autoincrement()) @unique
-//   name String
-//   password String
-// }
-
-// model devices {
-//   id Int @id @default(autoincrement()) @unique
-//   user_id Int
-
-//   list items[]
-// }
-
 model items {
   id Int @id @unique @default(autoincrement())
-  user users @relation(fields: [user_id], references: [id])
+  device devices @relation(fields: [device_id], references: [id])
    
-  user_id Int
+  device_id Int
   name String
   // expires DateTime @default(now()) @db.Date
   expires String
@@ -49,6 +27,18 @@ model users {
   id Int @id @default(autoincrement()) @unique
   name String
   password String
+}
 
+model devices {
+  id Int @id @default(autoincrement()) @unique
+  token String
+  user_id Int ?
+  code String @unique
   list items[]
+}
+
+model device_temp {
+  id Int @id @default(autoincrement()) @unique
+  code String @unique
+  max_age String @ignore
 }

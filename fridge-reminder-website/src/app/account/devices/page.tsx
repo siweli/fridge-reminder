@@ -1,6 +1,30 @@
+import { redirect } from "next/navigation"
 import "../../globals.css";
+import { cookies } from "next/headers";
+import prisma from "../../../libaries/prisma";
 
-export default function Page() {
+export default async function Page() {
+    const logged_in = cookies().get("user_id");
+    if (!logged_in) return
+    if (!logged_in) (
+        redirect("../account")
+    )
+
+    const user_devices = await prisma.devices.findMany ({
+        where: {
+            user_id: parseInt(logged_in.value)
+        }
+    })
+
+    let devices_list = []
+    for (let i=0; i<user_devices.length; i++) {
+        devices_list.push(
+            <div>
+                <h1>{user_devices[i].token}</h1>
+            </div>
+        )
+    }
+
     return (
         <main>
             <title>Devices</title>
@@ -8,9 +32,13 @@ export default function Page() {
             <div>
                 <h2>Activate a device:</h2>
                 <form method="POST" action="../../api/adddevice">
+                    <h2></h2>
                     <input name="otpcode" type="text" placeholder="OTP code"></input>
                     <button type="submit">Submit</button>
                 </form>
+            </div>
+            <div>
+                {devices_list}
             </div>
         </main>
     )

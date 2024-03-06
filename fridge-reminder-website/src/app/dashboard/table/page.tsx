@@ -14,7 +14,7 @@ export default async function Home() {
 
     const fridge_contents = await prisma.items.findMany({
         where: {
-            user_id: parseInt(token.value),
+            device_id: parseInt(token.value),
         },
     });
     

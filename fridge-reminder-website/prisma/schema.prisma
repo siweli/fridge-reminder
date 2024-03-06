@@ -27,12 +27,16 @@ model users {
   id Int @id @default(autoincrement()) @unique
   name String
   password String
+  list devices[]
 }
 
 model devices {
   id Int @id @default(autoincrement()) @unique
   token String @unique
+
+  user users @relation(fields: [user_id], references: [id])
   user_id Int
+
   list items[]
 }
 

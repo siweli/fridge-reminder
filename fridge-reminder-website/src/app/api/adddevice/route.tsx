@@ -8,9 +8,7 @@ export async function POST(req: NextRequest) {
     const otp_code = formData.get("otpcode")?.toString()
     const user_id = cookies().get("user_id")
 
-    if (!user_id) return
-    if (otp_code == null) return
-
+    if (otp_code == null || !user_id) return
 
     const device_otp = await prisma.device_temp.findUnique({
         where: {
@@ -18,7 +16,32 @@ export async function POST(req: NextRequest) {
         }
     })
 
-    if (!device_otp) return
+    async function delete_code(otp_code: string) {
+        await prisma.device_temp.delete ({
+            where: {
+                code: otp_code
+            }
+        })
+    }
+
+    if (!device_otp) {
+        console.log("code does not exist")
+        // return redirect("../account/devices")
+        return new NextResponse("code does not exist")
+    }
+
+    const device_exists = await prisma.devices.findUnique ({
+        where: {
+            token: device_otp.token
+        }
+    })
+
+    if (device_exists) {
+        console.log("device claimed already")
+        delete_code(otp_code)
+        // return redirect("../account/devices")
+        return new NextResponse("device claimed already")
+    }
 
     await prisma.devices.create ({
         data: {
@@ -27,11 +50,7 @@ export async function POST(req: NextRequest) {
         }
     })
 
-    await prisma.device_temp.delete ({
-        where: {
-            code: otp_code
-        }
-    })
+    delete_code(otp_code)
 
     redirect("../account/devices")
 

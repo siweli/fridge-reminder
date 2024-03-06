@@ -31,14 +31,13 @@ model users {
 
 model devices {
   id Int @id @default(autoincrement()) @unique
-  token String
-  user_id Int ?
-  code String @unique
+  token String @unique
+  user_id Int
   list items[]
 }
 
 model device_temp {
   id Int @id @default(autoincrement()) @unique
+  token String
   code String @unique
-  max_age String @ignore
 }

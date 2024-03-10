@@ -1,28 +1,35 @@
+'use client'
+ 
+import { useSearchParams } from 'next/navigation'
 import "../../globals.css";
 import styles from "./styles.module.css";
 import prisma  from "../../../libaries/prisma"
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation"
 
 export default async function Home() {
-    const token = cookies().get("user_id");
+    const searchParams = useSearchParams()
+    const search = searchParams.get('id')
 
-    if (!token) {
-        redirect("../account")
+    if (search == null) {
+        redirect("/account/devices")
     }
 
-    const devices = await prisma.devices.findMany ({
+    const id_exists = await prisma.devices.findFirst({
         where: {
-            user_id: parseInt(token.value)
+            id: parseInt(search)
         }
     })
 
+    if (!id_exists) {
+        redirect("/account/devices")
+    }
+
     const fridge_contents = await prisma.items.findMany({
         where: {
-            device_id: devices[0].id,
+            device_id: parseInt(search),
         },
     });
-    
+
     let rows = []
     for (let i=0; i<fridge_contents.length; i++) {
         rows.push(
@@ -59,7 +66,7 @@ export default async function Home() {
                 <div className={styles.new_item}>
                     <h2>Add a new item:</h2>
                     <form method="POST" action="../../api/addrow">
-                        <input type="hidden" name="device_id" value={devices[0].id}></input>
+                        <input type="hidden" name="device_id" value={search}></input>
                         <input name="item_name" type="text" placeholder="Item name" className={styles.entry}></input>
                         <p>Expires:</p>
                         <input name="expire_date" type="date"></input>

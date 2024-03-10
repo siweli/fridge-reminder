@@ -2,6 +2,7 @@ import { redirect } from "next/navigation"
 import "../../globals.css";
 import { cookies } from "next/headers";
 import prisma from "../../../libaries/prisma";
+// import Link from "next/link";
 
 export default async function Page() {
     const logged_in = cookies().get("user_id");
@@ -20,7 +21,12 @@ export default async function Page() {
     for (let i=0; i<user_devices.length; i++) {
         devices_list.push(
             <div>
-                <h1>{user_devices[i].token}</h1>
+                {/* <Link href={{ pathname: "/dashboard/table", query: { id: user_devices[i].id } }}>
+                    <h1>{user_devices[i].token}</h1>
+                </Link> */}
+                <a href="/dashboard/table">
+                    <h1>{user_devices[i].token}</h1>
+                </a>
             </div>
         )
     }

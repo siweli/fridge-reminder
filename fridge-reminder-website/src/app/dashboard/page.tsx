@@ -7,7 +7,7 @@ export default function Page() {
             <title>Dashboard</title>
             <h1>Dashboard</h1>
             <div className={styles.card_container}>
-                <a href="/dashboard/table">
+                <a href="/account/devices">
                     <div className={styles.dash_card}>
                         <h2>View fridge contents</h2>
                     </div>

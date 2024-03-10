@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "../../globals.css";
 import styles from "./styles.module.css";
 import prisma  from "../../../libaries/prisma"
@@ -12,9 +11,15 @@ export default async function Home() {
         redirect("../account")
     }
 
+    const devices = await prisma.devices.findMany ({
+        where: {
+            user_id: parseInt(token.value)
+        }
+    })
+
     const fridge_contents = await prisma.items.findMany({
         where: {
-            device_id: parseInt(token.value),
+            device_id: devices[0].id,
         },
     });
     
@@ -54,6 +59,7 @@ export default async function Home() {
                 <div className={styles.new_item}>
                     <h2>Add a new item:</h2>
                     <form method="POST" action="../../api/addrow">
+                        <input type="hidden" name="device_id" value={devices[0].id}></input>
                         <input name="item_name" type="text" placeholder="Item name" className={styles.entry}></input>
                         <p>Expires:</p>
                         <input name="expire_date" type="date"></input>

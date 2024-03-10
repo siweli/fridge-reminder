@@ -21,9 +21,12 @@ export default async function Page() {
     for (let i=0; i<user_devices.length; i++) {
         devices_list.push(
             <div>
-                <Link href={{ pathname: "/dashboard/table", query: { id: user_devices[i].id } }}>
+                {/* <Link href={{ pathname: "/dashboard/table", query: { id: user_devices[i].id } }}>
                     <h1>{user_devices[i].token}</h1>
-                </Link>
+                </Link> */}
+                <a href={"/dashboard/table?id="+user_devices[i].id}>
+                    <h1>{user_devices[i].token}</h1>
+                </a>
             </div>
         )
     }

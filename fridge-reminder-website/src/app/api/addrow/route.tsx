@@ -18,5 +18,5 @@ export async function POST(req: NextRequest) {
         },
     })
 
-    redirect("../dashboard/table")
+    redirect("../dashboard/table?id="+device_id)
 }

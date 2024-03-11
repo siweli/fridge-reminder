@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
         // return new NextResponse("code does not exist")
     }
 
-    const device_exists = await prisma.devices.findUnique ({
+    const device_exists = await prisma.devices.findFirst ({
         where: {
             token: device_otp.token
         }
@@ -41,7 +41,6 @@ export async function POST(req: NextRequest) {
         delete_code(otp_code)
         // new NextResponse("device claimed already")
         return redirect("../account/devices")
-        // return new NextResponse("device claimed already")
     }
 
     await prisma.devices.create ({

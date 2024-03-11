@@ -11,6 +11,14 @@ export async function POST(req: NextRequest) {
     const formData = await req.formData()
     const item_row = formData.get("id")?.toString()
     if (item_row == null) return
+
+    const row = await prisma.items.findUnique({
+        where: {
+            id: parseInt(item_row)
+        }
+    })
+
+    const device_id = row?.device_id 
     
     await prisma.items.delete({
         where: {
@@ -18,5 +26,5 @@ export async function POST(req: NextRequest) {
         }
     })
 
-    redirect("../dashboard/table")
+    redirect("../dashboard/table?id="+device_id)
 }

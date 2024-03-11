@@ -30,6 +30,8 @@ export default async function Home() {
         },
     });
 
+    // console.log(fridge_contents)
+
     let rows = []
     for (let i=0; i<fridge_contents.length; i++) {
         rows.push(

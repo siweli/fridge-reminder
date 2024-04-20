@@ -14,9 +14,8 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({
             "claimed": true
         })
-    } else {
-        return NextResponse.json({
-            "claimed": false
-        })
     }
+    return NextResponse.json({
+        "claimed": false
+    })
 }

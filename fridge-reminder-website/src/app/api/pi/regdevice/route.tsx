@@ -4,6 +4,19 @@ import { randomBytes } from "crypto"
 
 export async function POST(req: NextRequest) {
     const device_token = await req.json()
+
+    const device_exists = await prisma.devices.findFirst ({
+        where: {
+            token: device_token.data
+        }
+    })
+
+    if (device_exists) {
+        return NextResponse.json({
+            "claimed": true
+        })
+    }
+
     const otp_code = randomBytes(2).toString("hex")
 
     await prisma.device_temp.create ({
@@ -14,6 +27,6 @@ export async function POST(req: NextRequest) {
     })
 
     return NextResponse.json({
-        "code": otp_code
+        "claimed": false, "code": otp_code
     })
 }

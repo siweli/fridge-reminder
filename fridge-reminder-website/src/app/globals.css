@@ -2,6 +2,14 @@
     --text: rgb(242, 40, 91);
     --bg: rgb(19, 19, 27);
     --bg-alpha: rgba(19, 19, 27, 1);
+    --bg-gradient-1: rgb(25, 25, 25);
+    --bg-gradient-2: rgb(5, 5, 5);
+
+    /* --text: rgb(0, 150, 200);
+    --bg: rgb(0, 200, 200);
+    --bg-alpha: rgba(0, 200, 200, 1);
+    --bg-gradient-1: rgb(0, 200, 200);
+    --bg-gradient-2: rgb(0, 200, 200); */
 }
 
 * {
@@ -16,7 +24,7 @@ html, body {
 }
 
 html {
-    background-image: radial-gradient(rgb(25, 25, 25), rgb(5, 5, 5));
+    background-image: radial-gradient(var(--bg-gradient-1), var(--bg-gradient-2));
 }
 
 body {
@@ -72,10 +80,11 @@ h1, h2, a {
     display: inline;
     padding: 10px;
     color: var(--text);
+    border: 2px rgba(0, 0, 0, 0) solid;
 }
 
 .page_link:hover {
-    background: var(--text);
+    border: 2px var(--text) solid;
 }
 
 .other_pages {

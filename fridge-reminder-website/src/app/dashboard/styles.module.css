@@ -3,9 +3,12 @@
 } */
 
 .dash_card {
+    --text: rgb(242, 40, 91);
+    --bg: rgb(19, 19, 27);
+
     border-radius: 15px;
-    border: 2px black solid;
-    background-color: gray;
+    border: 2px var(--text) solid;
+    background-color: var(--bg);
     width: 12em;
     height: 5em;
     transition: width 1s, height 1s;

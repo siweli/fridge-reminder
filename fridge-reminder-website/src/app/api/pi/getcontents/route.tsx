@@ -1,4 +1,4 @@
-import prisma from "../../../libaries/prisma"
+import prisma from "../../../../libaries/prisma"
 import { NextRequest, NextResponse } from "next/server"
 import { randomBytes } from "crypto"
 
@@ -10,6 +10,12 @@ export async function POST(req: NextRequest) {
             token: device_token.data
         }
     })
+
+    if (!devices) {
+        return NextResponse.json({
+            "valid": false
+        })
+    }
 
 
     const fridge_contents = await prisma.items.findMany({

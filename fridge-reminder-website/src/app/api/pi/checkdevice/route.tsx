@@ -1,4 +1,4 @@
-import prisma from "../../../libaries/prisma"
+import prisma from "../../../../libaries/prisma"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(req: NextRequest) {

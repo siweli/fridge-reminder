@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation"
 import { NextRequest, NextResponse } from "next/server"
-import prisma  from "../../../libaries/prisma"
+import prisma  from "../../../../libaries/prisma"
 import { cookies } from "next/headers"
 
 export async function POST(req: NextRequest) {

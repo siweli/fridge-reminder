@@ -2,7 +2,7 @@
     
 } */
 
-.dash_card {
+/* .dash_card {
     --text: rgb(242, 40, 91);
     --bg: rgb(19, 19, 27);
 
@@ -18,7 +18,7 @@
     width: 15em;
     height: 6em;
     transition: width 1s, height 1s;
-}
+} */
 
 .container {
     columns: 2;

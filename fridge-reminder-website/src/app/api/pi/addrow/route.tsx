@@ -4,8 +4,6 @@ import prisma  from "../../../../libaries/prisma"
 export async function POST(req: NextRequest) {
     const pi_json = await req.json()
 
-    console.log(pi_json)
-
     const device_exists = await prisma.devices.findFirst ({
         where: {
             token: pi_json.data

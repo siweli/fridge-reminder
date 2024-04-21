@@ -30,8 +30,6 @@ export default async function Home() {
         },
     });
 
-    // console.log(fridge_contents)
-
     let rows = []
     for (let i=0; i<fridge_contents.length; i++) {
         rows.push(
@@ -66,7 +64,7 @@ export default async function Home() {
                 <button type="submit" className={styles.add_row_btn}>+</button>
 
                 <div className={styles.new_item}>
-                    <h2>Add a new item:</h2>
+                    <h2 className={styles.new_item_h2}>Add a new item:</h2>
                     <form method="POST" action="../../api/addrow">
                         <input type="hidden" name="device_id" value={search}></input>
                         <input name="item_name" type="text" placeholder="Item name" className={styles.entry}></input>

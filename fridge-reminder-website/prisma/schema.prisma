@@ -19,7 +19,6 @@ model items {
    
   device_id Int
   name String
-  // expires DateTime @default(now()) @db.Date
   expires String
 }
 

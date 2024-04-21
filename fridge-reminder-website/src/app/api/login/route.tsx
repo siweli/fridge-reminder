@@ -2,7 +2,6 @@ import { redirect } from "next/navigation"
 import { NextRequest, NextResponse } from "next/server"
 import prisma from "../../../libaries/prisma"
 import { cookies } from "next/headers"
-import { randomUUID } from "crypto"
 
 export async function POST(req: NextRequest) {
     const formData = await req.formData()
@@ -19,11 +18,8 @@ export async function POST(req: NextRequest) {
 
     if (!login) return
 
-    // cookies().set('token', randomUUID());
-    // cookies().set('token', user, {maxAge: 30})
     cookies().set("user_logged_in", user)
     cookies().set("user_id", login[0].id.toString())
     
-
     redirect("../account")
 }

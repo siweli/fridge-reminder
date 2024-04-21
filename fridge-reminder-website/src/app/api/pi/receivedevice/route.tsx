@@ -1,9 +1,10 @@
+// UNUSED API WAS ONLY HERE FOR TESTING PURPOSES
+
 import prisma from "../../../../libaries/prisma"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(req: NextRequest) {
     const device_contents = await req.json()
-    console.log(device_contents.contents)
 
     const device_exists = await prisma.devices.findFirst ({
         where: {

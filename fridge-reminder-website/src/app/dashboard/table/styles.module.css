@@ -5,6 +5,7 @@
   font-size: 1.7em;
   border-spacing: 0px;
   border-collapse: collapse;
+  background-color: rgb(200, 200, 200);
 }
 
 /* table, th, td {
@@ -67,8 +68,13 @@
   border: 5px black solid;
   border-radius: 10px;
   width: 30%;
-  height: 7em;
+  height: 8em;
   /* display: none; */
+}
+
+.new_item_h2 {
+  text-shadow: none;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .entry {

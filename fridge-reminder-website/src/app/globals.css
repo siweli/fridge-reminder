@@ -1,5 +1,6 @@
 :root {
-    --text: rgb(242, 40, 91);
+    --text: rgb(200, 40, 91);
+    --bg-red: rgb(242, 40, 91);
     --bg: rgb(19, 19, 27);
     --bg-alpha: rgba(19, 19, 27, 1);
     --bg-gradient-1: rgb(25, 25, 25);
@@ -34,7 +35,7 @@ body {
     display: flex;
     flex-direction: column;
 
-    background-image: radial-gradient(ellipse, var(--text) 0%, var(--text) 30%, transparent 34%);
+    background-image: radial-gradient(ellipse, var(--bg-red) 0%, var(--bg-red) 30%, transparent 34%);
     background-size: var(--size) var(--size);
     background-repeat: repeat;
 }
@@ -81,6 +82,14 @@ h1, h2, a {
     padding: 10px;
     color: var(--text);
     border: 2px rgba(0, 0, 0, 0) solid;
+
+    text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000;
+    -webkit-font-smoothing: antialiased;
+}
+
+input {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .page_link:hover {

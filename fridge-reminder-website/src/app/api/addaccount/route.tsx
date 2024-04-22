@@ -9,6 +9,17 @@ export async function POST(req: NextRequest) {
     const pass = formData.get("password")?.toString()
     if (user == null || pass == null) return
 
+    const user_exists = await prisma.users.findMany({
+        where: {
+            name: user,
+        },
+    });
+
+    if (user_exists) {
+        console.log("user already exists")
+        redirect("../account")
+    }
+
     await prisma.users.create({
         data: {
             name: user,
@@ -23,7 +34,6 @@ export async function POST(req: NextRequest) {
         },
     });
 
-    // cookies().set('token', user, {maxAge: 30})
     cookies().set("user_logged_in", user)
     cookies().set("user_id", login[0].id.toString())
     redirect("../account")

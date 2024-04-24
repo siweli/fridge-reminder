@@ -16,7 +16,7 @@ datasource db {
 model items {
   id Int @id @unique @default(autoincrement())
   device devices @relation(fields: [device_id], references: [id])
-   
+  
   device_id Int
   name String
   expires String

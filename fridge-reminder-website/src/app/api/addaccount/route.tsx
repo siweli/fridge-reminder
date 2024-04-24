@@ -7,7 +7,11 @@ export async function POST(req: NextRequest) {
     const formData = await req.formData()
     const user = formData.get("username")?.toString()
     const pass = formData.get("password")?.toString()
-    if (user == null || pass == null) return
+    if (user == "" || pass == "") {
+        console.log("user or password cannot be empty")
+        redirect("../account")
+    }
+    if (user == null || pass == null) return // satisfies an error with empty form data
 
     const user_exists = await prisma.users.findMany({
         where: {

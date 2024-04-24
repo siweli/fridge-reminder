@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
         },
     });
 
-    if (user_exists) {
+    if (user_exists.length !== 0) {
         console.log("user already exists")
         redirect("../account")
     }
